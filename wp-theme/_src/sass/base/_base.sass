@@ -1,0 +1,109 @@
+//=================================
+// TYPOGRAPHY
+//=================================
+
+//---------------------------------
+// Pseudo
+//---------------------------------
+
+\::selection
+  background: #777
+  color: #fff
+  text-shadow: none
+
+//---------------------------------
+// General
+//---------------------------------
+
+html
+  font-size: 62.5%
+
+body
+  background: #fff
+  color: #000
+  font-size: $body-font-size
+  +font-smoothing
+
+a
+  color: setcolor(black)
+  text-decoration: none
+  &:hover
+    color: setcolor(black)
+
+//---------------------------------
+// Headlines
+//---------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  line-height: 1em
+  a
+    color: #000
+    text-decoration: none
+    &:hover,
+    &:focus,
+    &:active
+      color: setcolor(black, medium)
+    &:focus
+      outline: none
+
+//---------------------------------
+// Text Components
+//---------------------------------
+
+p,
+dl,
+address
+  font-size: rem(16px)
+
+i,
+em
+  font-style: italic
+
+b,
+strong
+  font-weight: bold
+
+//---------------------------------
+// List Style
+//---------------------------------
+
+ul,
+ol,
+dd
+
+ul,
+ol
+
+li
+  line-height: 1
+
+//---------------------------------
+// Placeholder Extend Font Sizes
+//---------------------------------
+
+// This is handy if you're not using rems and want to control your own sizing based on breakpoint
+// We recommend using REM sizing for this, but have provided several examples to help get you started
+
+%font-large
+  font-size: em(28px)
+  +mq(small)
+    font-size: em(30px)
+
+  +mq(medium)
+    font-size: em(36px)
+
+  +mq(large)
+    font-size: em(46px)
+
+%font-medium
+  font-size: em(18px)
+  +mq(medium)
+    font-size: em(22px)
+
+  +mq(large)
+    font-size: em(24px)
