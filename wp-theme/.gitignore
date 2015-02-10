@@ -45,3 +45,5 @@ Thumbs.db
 # Compiler #
 ############
 node_modules
+
+assets/js/main.js

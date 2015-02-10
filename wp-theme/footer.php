@@ -1,16 +1,18 @@
-
+	<footer>
+		<h2>Charlie Rosenbury</h2>
+		<section class="contact">
+			<article class="phone">
+				417.693.2229
+			</article>
+			<article class="email">
+				417.693.2229
+			</article>
+			<article class="address">
+				417.693.2229
+			</article>
+		</section>
+	</footer>
 	<?php wp_footer(); ?>
 	<script src="<?php bloginfo('template_directory') ?>/assets/js/main.js"></script>
-	<?php if(ENVIRONMENT == 'staging' || ENVIRONMENT == 'testing'){ ?>
-		<script type='text/javascript'>
-			(function (d, t) {
-				var bh = d.createElement(t), s = d.getElementsByTagName(t)[0],
-					apiKey = 'API KEY HERE';
-				bh.type = 'text/javascript';
-				bh.src = '//www.bugherd.com/sidebarv2.js?apikey=' + apiKey;
-				s.parentNode.insertBefore(bh, s);
-			})(document, 'script');
-		</script>
-	<?php } ?>
 </body>
 </html>
