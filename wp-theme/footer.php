@@ -1,3 +1,6 @@
+	<canvas id="stage" width="400" height="400">
+		<p>Your browser doesn't support canvas.</p>
+	</canvas>
 	<footer>
 		<h2>Charlie Rosenbury</h2>
 		<section class="contact">
@@ -5,10 +8,10 @@
 				417.693.2229
 			</article>
 			<article class="email">
-				417.693.2229
+				charlie@selfinteractive.com
 			</article>
 			<article class="address">
-				417.693.2229
+				221 South Ave, Springfield, MO 65806
 			</article>
 		</section>
 	</footer>

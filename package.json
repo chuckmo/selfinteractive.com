@@ -1,13 +1,9 @@
 {
-  "name": "forty-eta-build-script",
-  "title": "40D Eta Build Script",
-  "description": "Gulp build script used for internal 40Digits projects.",
+  "name": "selfinteractive",
+  "title": "SELF Interactive Website",
+  "description": "Website for SELF Interactive.",
   "version": "1.0.0",
-  "homepage": "http://www.40digits.com",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/40Digits/eta.git"
-  },
+  "homepage": "http://www.selfinteractive.com",
   "browserify": {
     "transform": [
       "browserify-shim"

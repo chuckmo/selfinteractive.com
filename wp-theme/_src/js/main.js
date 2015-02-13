@@ -54,3 +54,6 @@ $.each(toRequire, function (i, moduleId) {
     }
   }
 });
+// browserfiy solution
+// ========
+return;  require('./modules/wave-footer'); 
