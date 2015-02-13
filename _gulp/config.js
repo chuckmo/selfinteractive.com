@@ -1,7 +1,7 @@
 // Paths
-var assetsDir = './assets',
-    sourceDir = './_src',
-    appDir  = './';
+var assetsDir = './wp-theme/assets',
+    sourceDir = './wp-theme/_src',
+    appDir  = './wp-theme/';
 
 // Source Directory
 var _source = {
@@ -27,7 +27,7 @@ var _assets = {
 
 // What sort of pre-processor are we utilizing?
 var _processor = {
-  format: 'scss'
+  format: 'sass'
 };
 
 // Gulp options/settings for tasks.

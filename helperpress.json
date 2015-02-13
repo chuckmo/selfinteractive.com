@@ -2,7 +2,7 @@
   "theme_path": "wp-theme",
   "css_path": "wp-theme/_src/sass/style.sass",
   "build_cmd": "gulp production",
-  "build_cmd_dir": "wp-theme",
+  "build_cmd_dir": "",
   "wp": {
     "theme": {
       "slug": "selfinteractive",
