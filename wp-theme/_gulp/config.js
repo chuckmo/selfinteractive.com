@@ -11,7 +11,8 @@ var _source = {
   sprites:  sourceDir + '/sprites/*.png',
   styles:   sourceDir + '/sass/**/*.{sass,scss}',
   symbols:  sourceDir + '/symbols/*.svg',
-  tpl:      sourceDir + '/templates/'
+  tpl:      sourceDir + '/templates/',
+  php:      appDir + '**/*.php'
 };
 
 // Assets Directory
@@ -32,15 +33,15 @@ var _processor = {
 // Gulp options/settings for tasks.
 module.exports = {
   browserify: {
-    debug: true,
+    debug: false,
+    src: _source.scripts,
     bundleConfigs: [{
       entries: [],
       dest: _assets.scripts,
       outputName: 'main.js',
-      mainJS: _source.scripts + 'main.js',
+      sourceJS: _source.scripts + 'main.js',
       configJS: _source.scripts + 'config/configMain.js'
-    }],
-    _source: _source
+    }]
   },
   sass: {
     src: _source.styles,
@@ -96,6 +97,9 @@ module.exports = {
   images: {
     src: _source.images,
     dest: _assets.images
+  },
+  php: {
+    src: _source.php
   },
   watch: {
     src: _source.root,
