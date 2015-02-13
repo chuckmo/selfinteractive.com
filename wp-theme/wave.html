@@ -62,11 +62,13 @@
 			var elasticityConstant = 1;
 			var particles = [];
 			var currentDrag = null;
+			var bounceRadius = 50;
+			var bounceTop;
+			var bounceBottom;
 			var mouseX = 0;
 			var mouseY = 0;
 			var stageWidth = $(document).width();
 			var stageHeight = $(document).height();
-			var bounceHeight = 100;
 			stage.width = stageWidth;
 			stage.height = stageHeight;
 
@@ -99,6 +101,10 @@
 				var space = (stageWidth + extend) / total;
 				var xpos = (space * .5) - (extend * .5);
 				var ypos = stageHeight * .5;
+
+				// set bounce y's
+				bounceTop = ypos - bounceRadius;
+				bounceBottom = ypos + bounceRadius;
 				
 				for(var i = 0; i < total; i++)
 				{
@@ -155,9 +161,8 @@
 				}
 			}
 			
-			
-			function render()
-			{
+			function moveParticles(){
+
 				for(var u = particles.length-1; u >= 0; --u)
 				{
 					var fExtensionY = 0;
@@ -181,8 +186,29 @@
 					particles[u].ay = -fForceY/particles[u].mass;
 					particles[u].vy	+= particles[u].ay;
 					particles[u].ypos += particles[u].vy * fpsAdjust;
+
+					// maybe bounce
+					if(particles[u].ypos < bounceTop){
+
+						// flip velocity dir
+						particles[u].vy *= -1;
+
+						particles[u].ypos = bounceTop + (bounceTop - particles[u].ypos);
+
+					}else if(particles[u].ypos > bounceBottom){
+
+						// flip velocity dir
+						particles[u].vy *= -1;
+
+						particles[u].ypos = bounceBottom - (particles[u].ypos - bounceBottom);
+					}
+
 					particles[u].vy /= dampeningConstant;
 				}
+			}
+			
+			function render()
+			{
 				
 				context.clearRect(0, 0, stageWidth, stageHeight);
 				context.fillStyle = color;
@@ -254,6 +280,7 @@
 					fpsAdjust = (newTime - lastFrameTime)/1000;
 					lastFrameTime = newTime;
 
+					moveParticles();
 				  render();
 
 				  window.requestAnimationFrame(animloop);
