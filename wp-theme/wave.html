@@ -74,21 +74,6 @@
 
 			var fpsAdjust;
 			
-			var IE = document.all ? true : false;
-			if(!IE) document.addEventListener(Event.MOUSEMOVE, getMouseXY, false);
-			document.onmousemove = getMouseXY;
-			
-			window.onresize = function(event)
-			{
-				stage.width = 10;
-				stage.height = 10;
-				stageWidth = $(document).width();
-				stageHeight = $(document).height();
-				stage.width = stageWidth;
-				stage.height = stageHeight;
-				
-				generate();
-			}
 			
 			
 			
@@ -158,11 +143,11 @@
 				{
 					var speed = mouseY - storeY;
 					
-					// particles[target - 2].vy = speed / 2 * elasticityConstant;
-					// particles[target - 1].vy = speed / 1.6 * elasticityConstant;
+					particles[target - 2].vy = speed / 2 * elasticityConstant;
+					particles[target - 1].vy = speed / 1.6 * elasticityConstant;
 					particles[target].vy = speed / elasticityConstant;
-					// particles[target + 1].vy = speed / 1.5 * elasticityConstant;
-					// particles[target + 2].vy = speed / 2 * elasticityConstant;
+					particles[target + 1].vy = speed / 1.6 * elasticityConstant;
+					particles[target + 2].vy = speed / 2 * elasticityConstant;
 				
 					storeY = mouseY;
 				}
@@ -240,17 +225,6 @@
 				context.lineTo(-50, stageHeight/2);
 				context.closePath();
 				context.fill();
-				
-				/*var i = particles.length;
-				while(--i > -1)
-				{
-					context.fillStyle = "#000000";
-					context.beginPath();
-					context.arc(particles[i].x,particles[i].y,1,0,Math.PI*2,true);
-					context.closePath();
-					context.fill();
-
-				}*/
 			}
 			
 			function getMouseXY(e)
@@ -273,8 +247,6 @@
   				
   				return true;
 			}
-
-			generate();
 			
 			var drawingCanvas = document.getElementById('stage');
 
@@ -282,6 +254,20 @@
 			if(drawingCanvas.getContext)
 			{
 				var context = drawingCanvas.getContext('2d');
+
+				// setup the particles
+				generate();
+				window.onresize = function(event)
+				{
+					stage.width = 10;
+					stage.height = 10;
+					stageWidth = $(document).width();
+					stageHeight = $(document).height();
+					stage.width = stageWidth;
+					stage.height = stageHeight;
+					
+					generate();
+				}
 
 				// setup animation loops
 				var lastFrameTime = new Date().getTime();
@@ -300,6 +286,11 @@
 				// setup random shove to keep the wave dancing
 				setInterval(randomShove, 2000);
 				randomShove();
+
+				// listen for mouse movement
+				var IE = document.all ? true : false;
+				if(!IE) document.addEventListener(Event.MOUSEMOVE, getMouseXY, false);
+				document.onmousemove = getMouseXY;
 			}
 			
 		</script>
