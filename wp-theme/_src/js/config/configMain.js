@@ -13,7 +13,6 @@ module.exports = {
     'body.anotherTemplate': ['./this_one', '!./not_this_one']
   */
   selectors: {
-    'div.module':   ['./modules/sampleModule'],
-    'div.sample':   ['./views/sampleView']
+    'body':   ['./modules/wave']
   }
 };
