@@ -60,9 +60,11 @@
 			var fK = .5;
 			var dampeningConstant = 1.01;
 			var elasticityConstant = 1;
+			var shoveStrength = 3;
 			var particles = [];
 			var currentDrag = null;
 			var bounceRadius = 50;
+			var bounceDampening = 1.5;
 			var bounceTop;
 			var bounceBottom;
 			var mouseX = 0;
@@ -114,7 +116,7 @@
 				// pick a particle
 				var i = Math.floor(Math.random()*particles.length);
 
-				particles[i].vy = bounceRadius * 2;
+				particles[i].vy = bounceRadius * shoveStrength;
 
 			}
 			
@@ -186,7 +188,7 @@
 						particles[u].vy *= -1;
 
 						particles[u].ypos = bounceTop + (bounceTop - particles[u].ypos);
-						particles[u].ya /= 2;
+						particles[u].ya /= bounceDampening;
 
 					}else if(particles[u].ypos > bounceBottom){
 
@@ -194,7 +196,7 @@
 						particles[u].vy *= -1;
 
 						particles[u].ypos = bounceBottom - (particles[u].ypos - bounceBottom);
-						particles[u].ya /= 2;
+						particles[u].ya /= bounceDampening;
 					}
 
 					particles[u].vy /= dampeningConstant;
