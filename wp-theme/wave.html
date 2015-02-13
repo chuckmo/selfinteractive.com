@@ -57,7 +57,7 @@
 			var springs = [];
 			var storeY;
 			var extend = 400; // TODO this should be calculated
-			var fK = .95;
+			var fK = .5;
 			var dampeningConstant = 1.01;
 			var elasticityConstant = 1;
 			var particles = [];
@@ -143,11 +143,11 @@
 				{
 					var speed = mouseY - storeY;
 					
-					particles[target - 2].vy = speed / 2 * elasticityConstant;
-					particles[target - 1].vy = speed / 1.6 * elasticityConstant;
+					particles[target - 2].vy = speed / 3 * elasticityConstant;
+					particles[target - 1].vy = speed / 2 * elasticityConstant;
 					particles[target].vy = speed / elasticityConstant;
-					particles[target + 1].vy = speed / 1.6 * elasticityConstant;
-					particles[target + 2].vy = speed / 2 * elasticityConstant;
+					particles[target + 1].vy = speed / 2 * elasticityConstant;
+					particles[target + 2].vy = speed / 3 * elasticityConstant;
 				
 					storeY = mouseY;
 				}
@@ -186,6 +186,7 @@
 						particles[u].vy *= -1;
 
 						particles[u].ypos = bounceTop + (bounceTop - particles[u].ypos);
+						particles[u].ya /= 2;
 
 					}else if(particles[u].ypos > bounceBottom){
 
@@ -193,6 +194,7 @@
 						particles[u].vy *= -1;
 
 						particles[u].ypos = bounceBottom - (particles[u].ypos - bounceBottom);
+						particles[u].ya /= 2;
 					}
 
 					particles[u].vy /= dampeningConstant;
