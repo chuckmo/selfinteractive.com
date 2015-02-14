@@ -12,7 +12,8 @@
 module.exports = function (options) {
   var path = require('path'),
       monocle = require('monocle'),
-      minimatch = require('minimatch');
+      minimatch = require('minimatch'),
+      livereload = require('gulp-livereload');
 
   var fullRoot = path.resolve(options.root);
 
@@ -22,6 +23,7 @@ module.exports = function (options) {
     options.match.some(function (match) {
       var isMatch = minimatch(relativePath, match.when);
       isMatch && match.then();
+
       return isMatch;
     });
   }

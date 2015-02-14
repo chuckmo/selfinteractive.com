@@ -23,7 +23,7 @@ var _assets = {
   sprites:  assetsDir + '/images/sprites/',
   styles:   assetsDir + '/css/',
   symbols:  assetsDir + '/fonts/symbols/'
-}
+};
 
 // What sort of pre-processor are we utilizing?
 var _processor = {
@@ -47,8 +47,9 @@ module.exports = {
     src: _source.styles,
     dest: appDir,
     settings: {
-      indentedSyntax: false,
+      indentedSyntax: true,
       style: 'expanded',
+      errLogToConsole: true,
       sourceComments: 'normal'
     }
   },

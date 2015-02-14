@@ -1,7 +1,7 @@
 	<canvas id="stage" width="400" height="400">
 		<p>Your browser doesn't support canvas.</p>
 	</canvas>
-	<footer>
+	<footer class="site-footer">
 		<h2>Charlie Rosenbury</h2>
 		<section class="contact">
 			<article class="phone">
