@@ -33,7 +33,7 @@ var _processor = {
 // Gulp options/settings for tasks.
 module.exports = {
   browserify: {
-    debug: false,
+    debug: true,
     src: _source.scripts,
     bundleConfigs: [{
       entries: [],
