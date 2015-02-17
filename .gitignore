@@ -1,3 +1,8 @@
+/node_modules
+
+wp-theme/assets/js/main.js
+wp-theme/assets/images/
+wp-theme/style.css
 #### BEGIN HelperPress Rules ####
 # WordPress Core, Uploads & Plugins
 /www
@@ -15,10 +20,3 @@
 # Local site config
 /helperpress.local.json
 #### END HelperPress Rules ####
-
-/npm-debug.log
-/node_modules
-
-wp-theme/assets/js/main.js
-wp-theme/assets/images/
-wp-theme/style.css

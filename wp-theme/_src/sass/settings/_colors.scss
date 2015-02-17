@@ -25,3 +25,7 @@ $colors: (
     @warn "Couldn't find a color named `#{$color_name}`.";
   }
 }
+
+$color-dark: #242629;
+$color-gray: #53565a;
+$color-white: #ebebeb;

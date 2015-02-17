@@ -13,6 +13,7 @@ module.exports = {
     'body.anotherTemplate': ['./this_one', '!./not_this_one']
   */
   selectors: {
-    'body':   ['./modules/wave-footer']
+    'body':   ['./modules/wave-footer'],
+    'body.page-template-template-splash':   ['./modules/splash']
   }
 };

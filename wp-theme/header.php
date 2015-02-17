@@ -9,6 +9,7 @@
 
 	<title><?php wp_title('&raquo;','true','right'); ?></title>
 
+	<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/a752c506-8239-4fac-8448-480d875f552d.css"/>
 	<link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css" />
 
 	<link rel="shortcut icon" type="image/ico" href="<?php echo get_bloginfo('template_directory'); ?>/favicon.ico" />

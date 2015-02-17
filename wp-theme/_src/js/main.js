@@ -56,4 +56,4 @@ $.each(toRequire, function (i, moduleId) {
 });
 // browserfiy solution
 // ========
-return;  require('./modules/wave-footer'); 
+return;  require('./modules/wave-footer');  require('./modules/splash'); 

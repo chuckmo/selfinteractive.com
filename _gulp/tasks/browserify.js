@@ -15,6 +15,7 @@ var bundleLogger    = require('../util/bundleLogger');
 var handleErrors    = require('../util/handleErrors');
 var config          = require('../config').browserify;
 var fs              = require('fs');
+var livereload = require('gulp-livereload');
 
 var browserifyTask = function(callback, devMode) {
 
@@ -82,6 +83,7 @@ var browserifyTask = function(callback, devMode) {
     var reportFinished = function() {
       // Log when bundling completes
       bundleLogger.end(bundleConfig.outputName)
+      livereload();
 
       if(bundleQueue) {
         bundleQueue--;

@@ -1,4 +1,4 @@
-	<canvas id="stage" width="400" height="400">
+	<canvas id="stage" class="wave-canvas" width="400" height="400">
 		<p>Your browser doesn't support canvas.</p>
 	</canvas>
 	<footer class="site-footer">

@@ -1,9 +1,13 @@
 <?php
+/*
+Template Name: Splash
+*/
+
 get_header();
 ?>
-<header> 
-	<img src="<?php bloginfo('template_directory') ?>/assets/images/logo.png" alt="SELF Interactive" />
-	<h1>Interactive Development, Consulting &amp; Training</h1>
+<header class="splash-header"> 
+	<img class="logo" src="<?php bloginfo('template_directory') ?>/assets/images/logo.png" alt="SELF Interactive" />
+	<h1>Interactive Development,<br/> Consulting &amp; Training</h1>
 </header>
 <aside>
 	<ul>
