@@ -4,18 +4,15 @@ var changed    = require('gulp-changed'),
     config     = require('../config').images,
     livereload = require('gulp-livereload');
 
-function imagesDef(livereload){
-	return function() {
-	  var gulpTown = gulp.src(config.src)
-	    .pipe(changed(config.dest))
-	    .pipe(imagemin())
-	    .pipe(gulp.dest(config.dest));
-	    
-	    if(livereload)
-	    	gulpTown.pipe(livereload());
+gulp.task('images', function(){
+  return gulp.src(config.src)
+    .pipe(changed(config.dest))
+    .pipe(imagemin())
+    .pipe(gulp.dest(config.dest));
+});
 
-	    return gulpTown;
-	}
-}
-gulp.task('images', imagesDef(true));
-gulp.task('images_dist', imagesDef(false));
+gulp.task('images_dist', function(){
+  return gulp.src(config.src)
+    .pipe(imagemin())
+    .pipe(gulp.dest(config.dest));
+});

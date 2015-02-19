@@ -77,7 +77,6 @@ var browserifyTask = function(callback, devMode) {
           .pipe(source(bundleConfig.outputName))
           // Specify the output destination
           .pipe(gulp.dest(bundleConfig.dest))
-          .pipe(livereload())
           .on('end', reportFinished);
       };
 
@@ -103,6 +102,4 @@ var browserifyTask = function(callback, devMode) {
   };
 
 
-gulp.task('browserify', browserifyTask);
-
-module.exports = browserifyTask
+gulp.task('browserify_dist', browserifyTask);

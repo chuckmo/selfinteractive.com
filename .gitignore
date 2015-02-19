@@ -3,6 +3,8 @@
 wp-theme/assets/js/main.js
 wp-theme/assets/images/
 wp-theme/style.css
+wp-theme/assets/fonts/symbols
+
 #### BEGIN HelperPress Rules ####
 # WordPress Core, Uploads & Plugins
 /www

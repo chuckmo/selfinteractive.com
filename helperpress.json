@@ -3,6 +3,11 @@
   "css_path": "wp-theme/_src/sass/style.scss",
   "build_cmd": "gulp production",
   "build_cmd_dir": "./",
+  "environments": {
+    "development": {
+      "migrate_db_method": "ssh"
+    }
+  },
   "wp": {
     "theme": {
       "slug": "selfinteractive",
@@ -12,7 +17,8 @@
     "plugins": [
       "wordpress-seo",
       "duplicate-post",
-      "regenerate-thumbnails"
+      "regenerate-thumbnails",
+      "gist-github-shortcode"
     ]
   }
 }
