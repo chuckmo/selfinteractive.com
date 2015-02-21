@@ -5,6 +5,9 @@ wp-theme/assets/images/
 wp-theme/style.css
 wp-theme/assets/fonts/symbols
 
+.sass-cache
+*.css.map
+
 #### BEGIN HelperPress Rules ####
 # WordPress Core, Uploads & Plugins
 /www
