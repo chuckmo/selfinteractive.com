@@ -34,14 +34,19 @@
 	.contact
 		display: inline-block
 
-	article
+	.contact-method
+		color: $color-white
 		display: inline-block
 		line-height: 15px
 		margin-left: 35px
 		border-top: 6px solid $color-white
 		font-size: 15px
 		padding-top: 8px
+		transition: all .3s ease
 
 		&:before
 			vertical-align: middle
+
+		&:hover
+			border-top-color: $color-yellow
 

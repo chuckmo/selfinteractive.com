@@ -11,7 +11,7 @@ get_header();
 	<aside>
 		<ul class="contact-icos">
 			<li class="contact">
-				<a href="mailto:charlie@selfinteractive.com">
+				<a href="mailto:charlie@selfinteractive.com" data-toggle-footer="1">
 					Contact
 					<img src="<?php bloginfo('template_directory') ?>/assets/images/speech-point.png" class="speech-point" />
 				</a>

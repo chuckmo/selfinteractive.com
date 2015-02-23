@@ -83,14 +83,19 @@ module.exports = function(){
 
 		}
 
-	};
+	}
 	$win.on('scroll.footer', showHideFooter);
 
-	// toglle footer visibility when clicking the wave
-	$canvas.click(function(){
+	// toggle footer visibility
+	function toggleFooter(e){
+		e.preventDefault();
+
 		$footer.toggleClass('show');
 		footerVisible = !footerVisible;
-	});
+
+		return false;
+	}
+	$doc.on('click', '[data-toggle-footer]', toggleFooter);
 
 console.log('footer');
 	return {
