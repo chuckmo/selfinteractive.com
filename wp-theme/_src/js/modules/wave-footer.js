@@ -16,22 +16,50 @@ module.exports = function(){
 
 
 	var $win = $(window),
+		$doc = $(document),
 		$body = $('body'),
 		$canvas = $('.wave-canvas'),
-		$footer = $('.site-footer');
+		$footer = $('.site-footer'),
 
-	function positionFooter(){
+		scrollTop,
+		footerScrollH;
+
+	// set up the footer
+	function setupFooter(){
 		var winH = $win.height(),
-			footerH = $footer.height();
+			docH = $doc.height();
 
-		// position canvas
-		$canvas.css({
-			bottom: footerH 
-		});
+		if(docH < winH){
+			// set body to 100% so footer abs work
+			$body.height(winH + 400);
+			docH = winH + 400;
+		}else{
+			$body.height(docH + 400);
+		}
 
-		// set body to 100% so footer abs work
-		$body.height(winH);
+		footerScrollH = docH - winH;
 	}
-	positionFooter();
+	setupFooter();
+
+	// after scrolling past footerScrollH, add class to show footer
+	var footerVisible = false;
+	function showHideFooter(e){
+		scrollTop = $win.scrollTop();
+
+		if(footerVisible && scrollTop < footerScrollH + 200){
+			$footer.removeClass('show');
+			footerVisible = false;
+		}else if(!footerVisible && scrollTop > footerScrollH){
+			$footer.addClass('show');
+			footerVisible = true;
+		}
+
+	};
+	$win.on('scroll', showHideFooter);
+
+	$canvas.click(function(){
+		$footer.toggleClass('show');
+		footerVisible = !footerVisible;
+	});
 
 };
