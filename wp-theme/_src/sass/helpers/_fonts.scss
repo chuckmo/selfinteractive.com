@@ -75,46 +75,61 @@ $fonts: (
 // Icon Fonts
 //----------------------------------
 
+@charset "UTF-8";
+
 @font-face {
-	font-family: 'icon-font';
-	src: url('assets/fonts/icon-font/icon-font.eot');
-	src: url('assets/fonts/icon-font/icon-font.eot#iefix') format('embedded-opentype'),
-		 url('assets/fonts/icon-font/icon-font.woff') format('woff'),
-		 url('assets/fonts/icon-font/icon-font.ttf') format('truetype'),
-		 url('assets/fonts/icon-font/icon-font.svg#icon-font') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "rosenbury-icons";
+  src:url("assets/fonts/rosenbury-icons.eot");
+  src:url("assets/fonts/rosenbury-icons.eot?#iefix") format("embedded-opentype"),
+    url("assets/fonts/rosenbury-icons.woff") format("woff"),
+    url("assets/fonts/rosenbury-icons.ttf") format("truetype"),
+    url("assets/fonts/rosenbury-icons.svg#rosenbury-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-// Icon Font Placeholder
-%icon-font {
-	font-family: "icon-font" !important;
-	width: 1em;
-	margin: 0;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-align: center;
-	text-decoration: inherit;
-	text-transform: none;
-	line-height: 1em;
-	speak: none;
+[data-icon]:before {
+  font-family: "rosenbury-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// Mixin to get icon-fonts going.
-// DO NOT APPLY STYLES TO MIXIN - ACTS AS A RESET
-// example usage: @include icon-font(icon-name);
-@mixin icon-font($icon: false) {
-	@extend %icon-font;
-
-	@if $icon == "icon-name" {
-		content: '\e800';
-	}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "rosenbury-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-	@include icon-font();
+.icon-envelope:before {
+  content: "a";
 }
-
-// Icon Font Glyph Code
-.icon-example:before { content: '\e800'; }
+.icon-git:before {
+  content: "b";
+}
+.icon-linkedin:before {
+  content: "c";
+}
+.icon-location-pin:before {
+  content: "d";
+}
+.icon-phone:before {
+  content: "e";
+}
+.icon-twitter:before {
+  content: "f";
+}

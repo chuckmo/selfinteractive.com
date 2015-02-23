@@ -17,13 +17,13 @@ get_header();
 				</a>
 			</li>
 			<li class="twitter">
-				<a href="https://twitter.com/chuckmo">Twitter @chuckmo</a>
+				<a href="https://twitter.com/chuckmo" class="icon icon-twitter" title="Twitter @chuckmo"></a>
 			</li>
 			<li class="github">
-				<a href="https://github.com/chuckmo">Github</a>
+				<a href="https://github.com/chuckmo" class="icon icon-git" title="Github"></a>
 			</li>
 			<li class="linkedin">
-				<a href="https://www.linkedin.com/in/rosenbury">LinkedIn</a>
+				<a href="https://www.linkedin.com/in/rosenbury" class="icon icon-linkedin" title="LinkedIn"></a>
 			</li>
 		</ul>
 	</aside>
