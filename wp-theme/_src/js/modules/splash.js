@@ -1,5 +1,7 @@
 module.exports = function(){
 
+	// var footer = require('./wave-footer.js')();
+
 	var $win = $(window),
 		$header = $('.splash-header');
 

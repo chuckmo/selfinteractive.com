@@ -1,5 +1,6 @@
 module.exports = function(){
-	var WaveCanvas = require('./WaveCanvas');
+	var selfConfig = require('../config/self-config'),
+		WaveCanvas = require('./WaveCanvas');
 
 	var wcOpts = {
 		stageHeight: 100	
@@ -22,6 +23,7 @@ module.exports = function(){
 		$footer = $('.site-footer'),
 
 		scrollTop,
+		lastScrollTop,
 		footerScrollH;
 
 	// set up the footer
@@ -31,10 +33,10 @@ module.exports = function(){
 
 		if(docH < winH){
 			// set body to 100% so footer abs work
-			$body.height(winH + 400);
-			docH = winH + 400;
+			$body.height(winH + 100);
+			docH = winH + 100;
 		}else{
-			$body.height(docH + 400);
+			$body.height(docH + 100);
 		}
 
 		footerScrollH = docH - winH;
@@ -42,24 +44,57 @@ module.exports = function(){
 	setupFooter();
 
 	// after scrolling past footerScrollH, add class to show footer
-	var footerVisible = false;
+	var footerVisible = false,
+		pauseFooterScroll = false;
+
 	function showHideFooter(e){
+		lastScrollTop = scrollTop;
 		scrollTop = $win.scrollTop();
 
-		if(footerVisible && scrollTop < footerScrollH + 200){
+		var scrollingDown = 0 < scrollTop - lastScrollTop;
+
+		if(!scrollingDown && footerVisible && scrollTop < footerScrollH + selfConfig.footerHideBuffer){
+
+			// hide footer
+			
 			$footer.removeClass('show');
-			footerVisible = false;
-		}else if(!footerVisible && scrollTop > footerScrollH){
+			$win.off('scroll.footer');
+
+			setTimeout(function(){
+
+				footerVisible = false;
+				$win.on('scroll.footer', showHideFooter);
+
+			}, selfConfig.footerAnimSpeed);
+			
+		}else if(scrollingDown && !footerVisible && scrollTop > footerScrollH){
+
+			// show footer
+
 			$footer.addClass('show');
-			footerVisible = true;
+			$win.off('scroll.footer');
+
+			setTimeout(function(){
+
+				footerVisible = true;
+				$win.on('scroll.footer', showHideFooter);
+
+			}, selfConfig.footerAnimSpeed);
+
 		}
 
 	};
-	$win.on('scroll', showHideFooter);
+	$win.on('scroll.footer', showHideFooter);
 
+	// toglle footer visibility when clicking the wave
 	$canvas.click(function(){
 		$footer.toggleClass('show');
 		footerVisible = !footerVisible;
 	});
+
+console.log('footer');
+	return {
+		showHideFooter: showHideFooter
+	}
 
 };
