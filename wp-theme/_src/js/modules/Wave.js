@@ -8,7 +8,8 @@ module.exports = (function(window, document, undefined){
 			dampeningConstant: 1.01,
 			elasticityConstant: 1,
 			shoveStrength: 3,
-			bounceDampening: 1.5,
+			shoveFrequency: 2, // in seconds
+			bounceDampening: 2,
 			bounceDist: waveCanvas.options.stageHeight / 2
 		};
 
@@ -31,6 +32,8 @@ module.exports = (function(window, document, undefined){
 
 		this._bounceTop = ypos - this.options.bounceDist;
 		this._bounceBottom = ypos + this.options.bounceDist;
+
+		this.shoveTimer = 0;
 		
 		for(var i = 0; i < total; i++){
 			var particle = {};
@@ -97,6 +100,13 @@ module.exports = (function(window, document, undefined){
 
 	Wave.prototype.moveParticles = function(fpsAdjust){
 
+		// maybe random shove
+		if(this.shoveTimer > this.options.shoveFrequency){
+			this.shoveTimer = 0;
+			this.randomShove();
+		}
+		this.shoveTimer += fpsAdjust;
+
 		for(var u = this.particles.length-1; u >= 0; --u){
 			var fExtensionY = 0;
 			var fForceY = 0;
@@ -125,7 +135,7 @@ module.exports = (function(window, document, undefined){
 				this.particles[u].vy *= -1;
 
 				this.particles[u].ypos = this._bounceTop + Math.abs(this._bounceTop - this.particles[u].ypos);
-				this.particles[u].ya /= this.options.bounceDampening;
+				this.particles[u].ay = 0;
 
 			}else if(this.particles[u].ypos > this._bounceBottom){
 
@@ -133,7 +143,7 @@ module.exports = (function(window, document, undefined){
 				this.particles[u].vy *= -1;
 
 				this.particles[u].ypos = this._bounceBottom - (this.particles[u].ypos - this._bounceBottom);
-				this.particles[u].ya /= this.options.bounceDampening;
+				this.particles[u].ay = 0;
 			}
 
 			this.particles[u].vy /= this.options.dampeningConstant;

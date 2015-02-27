@@ -14,7 +14,7 @@ module.exports = (function(window, document, undefined){
 		this.stage = $(this.options.stageSelector)[0];
 
 		// where we store multiplier for variable framerate
-		this.fpsAdjust = 1;
+		this.fpsAdjust = 1000;
 
 		// Mouse tracking
 		this.mouseStoreX = 0;
@@ -52,9 +52,6 @@ module.exports = (function(window, document, undefined){
 			this.waves.map(function(wave){
 				// setup the particles
 				wave.generate();
-
-				// setup random shove to keep the wave dancing
-				setInterval(wave.randomShove.bind(wave), 2000);
 				wave.randomShove();
 			});
 
@@ -65,7 +62,10 @@ module.exports = (function(window, document, undefined){
 				var newTime = new Date().getTime();
 
 				// calculate time since last frame and store as fraction of a second
-				wc.fpsAdjust = (newTime - lastFrameTime)/1000;
+				var timeDelta = newTime - lastFrameTime;
+				if(timeDelta < 1000)
+					wc.fpsAdjust = timeDelta/1000;
+
 				lastFrameTime = newTime;
 
 				// clear canvas

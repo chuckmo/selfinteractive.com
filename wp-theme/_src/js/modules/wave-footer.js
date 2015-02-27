@@ -95,9 +95,8 @@ module.exports = function(){
 
 		return false;
 	}
-	$doc.on('click', '[data-toggle-footer]', toggleFooter);
+	$('[data-toggle-footer]').on('click', toggleFooter);
 
-console.log('footer');
 	return {
 		showHideFooter: showHideFooter
 	}

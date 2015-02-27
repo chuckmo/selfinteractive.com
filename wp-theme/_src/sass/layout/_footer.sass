@@ -24,8 +24,13 @@
 	color: $color-white
 	padding: 0 100px
 	height: 0
-	line-height: 300px
 	overflow: hidden
+
+	+mq($mq-xlarge, "min")
+		h2,
+		.contact-method
+			height: 300px
+			line-height: 300px
 
 	h2
 		font-size: 40px
