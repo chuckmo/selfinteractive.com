@@ -22,12 +22,59 @@ module.exports = function(){
 		$canvas = $('.wave-canvas'),
 		$footer = $('.site-footer'),
 
-		scrollTop,
-		lastScrollTop,
+		scrollTop = 0,
+		lastScrollTop = 0,
 		footerScrollH;
 
+	function setupWaveEntrance(){
+
+		setTimeout(function(){
+			
+			$footer.addClass('cower entrance');
+
+			setTimeout(function(){
+				$footer.removeClass('entrance');
+			}, selfConfig.waveEntranceSpeed);
+
+		}, selfConfig.waveEntranceDelay);
+
+	}
+
+	// after scrolling past footerScrollH, add class to show footer
+	var footerVisible = false,
+		pauseFooterScroll = false;
+
+	function maybeToggleFooterOnScroll(e){
+		lastScrollTop = scrollTop;
+		scrollTop = $win.scrollTop();
+
+		var scrollingDown = 0 < scrollTop - lastScrollTop;
+
+		if(
+			!scrollingDown && footerVisible && scrollTop < footerScrollH + selfConfig.footerHideBuffer
+			|| scrollingDown && !footerVisible && scrollTop > footerScrollH
+		){
+			toggleFooter();
+		}
+			
+
+	}
+
+
+	// toggle footer visibility
+	function toggleFooter(e){
+		if(e)
+			e.preventDefault();
+
+		$footer.toggleClass('show');
+		footerVisible = !footerVisible;
+
+		return false;
+	}
+
+
 	// set up the footer
-	function setupFooter(){
+	(function setupFooter(){
 		var winH = $win.height(),
 			docH = $doc.height();
 
@@ -40,65 +87,25 @@ module.exports = function(){
 		}
 
 		footerScrollH = docH - winH;
-	}
-	setupFooter();
 
-	// after scrolling past footerScrollH, add class to show footer
-	var footerVisible = false,
-		pauseFooterScroll = false;
 
-	function showHideFooter(e){
-		lastScrollTop = scrollTop;
-		scrollTop = $win.scrollTop();
+		// run maybeToggleFooterOnScroll after a short delay
+		setTimeout(function(){
 
-		var scrollingDown = 0 < scrollTop - lastScrollTop;
+			maybeToggleFooterOnScroll();
+			// ...and now on scroll
+			$win.on('scroll.footer', maybeToggleFooterOnScroll);
 
-		if(!scrollingDown && footerVisible && scrollTop < footerScrollH + selfConfig.footerHideBuffer){
+		}, selfConfig.waveEntranceDelay);
 
-			// hide footer
-			
-			$footer.removeClass('show');
-			$win.off('scroll.footer');
+		// turn on click listener for footer togglers
+		$('[data-toggle-footer]').on('click', toggleFooter);
 
-			setTimeout(function(){
-
-				footerVisible = false;
-				$win.on('scroll.footer', showHideFooter);
-
-			}, selfConfig.footerAnimSpeed);
-			
-		}else if(scrollingDown && !footerVisible && scrollTop > footerScrollH){
-
-			// show footer
-
-			$footer.addClass('show');
-			$win.off('scroll.footer');
-
-			setTimeout(function(){
-
-				footerVisible = true;
-				$win.on('scroll.footer', showHideFooter);
-
-			}, selfConfig.footerAnimSpeed);
-
-		}
-
-	}
-	$win.on('scroll.footer', showHideFooter);
-
-	// toggle footer visibility
-	function toggleFooter(e){
-		e.preventDefault();
-
-		$footer.toggleClass('show');
-		footerVisible = !footerVisible;
-
-		return false;
-	}
-	$('[data-toggle-footer]').on('click', toggleFooter);
+		setupWaveEntrance();
+	})();
 
 	return {
-		showHideFooter: showHideFooter
-	}
+		showHideFooter: maybeToggleFooterOnScroll
+	};
 
 };

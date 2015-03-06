@@ -4,13 +4,21 @@
 
 .site-footer
 	position: fixed
-	bottom: 0
 	left: 0
+	bottom: -100px
 	right: 0
-	height: 100px
+	height: 0
 	padding-top: 100px
 	text-align: left
 	transition: all .4s ease
+
+	&.cower
+		height: 100px
+		bottom: 0
+
+		&.entrance
+			transition: all 1.5s ease
+
 
 	&.show
 		height: 400px

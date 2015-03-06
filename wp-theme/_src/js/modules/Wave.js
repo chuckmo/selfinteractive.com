@@ -64,7 +64,7 @@ module.exports = (function(window, document, undefined){
 		// push on it
 		this.particles[i].vy = this.options.bounceDist * this.options.shoveStrength;
 
-	}
+	};
 
 	Wave.prototype.mouseMove = function(x, y, lastX, lastY){
 		var particle = null;
