@@ -26,7 +26,14 @@ module.exports = function(){
 		lastScrollTop = 0,
 		footerScrollH;
 
+
+	var waveSetup = false;
 	function setupWaveEntrance(){
+
+		if(waveSetup)
+			return;
+
+		waveSetup = true;
 
 		setTimeout(function(){
 			
@@ -74,9 +81,16 @@ module.exports = function(){
 
 
 	// set up the footer
-	(function setupFooter(){
+	var footerSetup = false;
+	function setupFooter(){
 		var winH = $win.height(),
+			winW = $win.width(),
 			docH = $doc.height();
+
+		if(winW < selfConfig.dynamicFooterBreakpoint){
+			$body.height('auto');
+			return;
+		}
 
 		if(docH < winH){
 			// set body to 100% so footer abs work
@@ -88,6 +102,13 @@ module.exports = function(){
 
 		footerScrollH = docH - winH;
 
+		//////////////////////////////////////
+		// only run the following stuff once
+		// ///////////////////////////////////
+		if(footerSetup)
+			return;
+
+		footerSetup = true;
 
 		// run maybeToggleFooterOnScroll after a short delay
 		setTimeout(function(){
@@ -99,10 +120,18 @@ module.exports = function(){
 		}, selfConfig.waveEntranceDelay);
 
 		// turn on click listener for footer togglers
-		$('[data-toggle-footer]').on('click', toggleFooter);
+		$('[data-toggle-footer]').on('click.toggle-footer', toggleFooter);
+
+		// don't toggle footer when clicking a link in footer
+		$footer.find('a').on('click', function(e){
+			e.stopImmediatePropagation();
+		});
 
 		setupWaveEntrance();
-	})();
+	};
+
+	$win.on('resize', setupFooter);
+	setupFooter();
 
 	return {
 		showHideFooter: maybeToggleFooterOnScroll

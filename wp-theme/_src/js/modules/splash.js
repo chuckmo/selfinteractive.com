@@ -14,4 +14,6 @@ module.exports = function(){
 	}
 	verticalCenter();
 
+	$win.on('resize', verticalCenter);
+
 };

@@ -18,24 +18,22 @@ module.exports = (function(window, document, undefined){
 		this.waveCanvas = waveCanvas;
 		this.springs = [];
 		this.particles = [];
-
-		this.extend = 400; // TODO this should be calculated
 	}
 		
 		
 	Wave.prototype.generate = function(){
 		var total = Math.ceil(this.waveCanvas.options.stageWidth / this.options.particleSpread);
 		
-		var space = (this.waveCanvas.options.stageWidth + this.extend) / total;
-		var xpos = (space * .5) - (this.extend * .5);
-		var ypos = this.waveCanvas.options.stageHeight * .5;
+
+		var xpos = this.options.particleSpread * -0.5;
+		var ypos = this.waveCanvas.options.stageHeight * 0.5;
 
 		this._bounceTop = ypos - this.options.bounceDist;
 		this._bounceBottom = ypos + this.options.bounceDist;
 
 		this.shoveTimer = 0;
 		
-		for(var i = 0; i < total; i++){
+		for(var i = 0; i <= total + 1; i++){
 			var particle = {};
 			
 			particle.x = particle.xpos = xpos;
@@ -46,7 +44,7 @@ module.exports = (function(window, document, undefined){
 
 			this.particles.push(particle);
 			
-			xpos += space;
+			xpos += this.options.particleSpread;
 		}
 		
 		for(var u = 0; u < this.particles.length-1; u++){

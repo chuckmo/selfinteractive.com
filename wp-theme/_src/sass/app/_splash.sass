@@ -1,18 +1,46 @@
 .page-template-template-splash
+	background: $color-dark
+
+	+mq($mq-small, "min")
+		background: $color-white
+
+
 	.logo
 		margin-bottom: 27px
+		max-width: 100%
 
 	.splash-header
-		padding: 0 100px
-		position: absolute
-		left: 0
-		right: 0
+		padding: 50px 25px
+		position: static
+		background-color: $color-white
+
+		// make it vertical center
+		+mq($mq-small, "min")
+			padding: 0 50px
+			position: absolute
+			left: 0
+			right: 0
+
+		+mq($mq-large, "min")
+			padding: 0 100px
 
 	h1
 		padding-top: 25px
-		font-size: 80px
+		font-size: 38px
 		border-top: 8px solid $color-dark
-		line-height: 85px
+		line-height: 42px
+
+		+mq($mq-small, "min")
+			padding-top: 25px
+			font-size: 50px
+			border-top: 8px solid $color-dark
+			line-height: 55px
+
+		+mq($mq-large, "min")
+			padding-top: 25px
+			font-size: 80px
+			border-top: 8px solid $color-dark
+			line-height: 85px
 
 .contact-icos
 	list-style: none

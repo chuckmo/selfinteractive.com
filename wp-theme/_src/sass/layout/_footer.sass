@@ -3,36 +3,67 @@
 //=================================
 
 .site-footer
-	position: fixed
+
+	// static footer
+	position: relative
 	left: 0
-	bottom: -100px
+	bottom: 0
 	right: 0
-	height: 0
+	height: auto
 	padding-top: 100px
 	text-align: left
 	transition: all .4s ease
 
-	&.cower
-		height: 100px
-		bottom: 0
 
-		&.entrance
-			transition: all 1.5s ease
-
-
-	&.show
-		height: 400px
-
+	// enable dynamic stuff
+	+mq($mq-small, "min")
+		height: 0
+		bottom: -100px
+		position: fixed
+		
 		.footer-content
-			height: 300px
+			height: 0
+
+		// peak up from the bottom
+		&.cower
+			height: 100px
+			bottom: 0
+
+			// keep entrance anim slower
+			&.entrance
+				transition: all 1.5s ease
+
+		&.show
+			height: 400px
+
+			.footer-content
+				height: 300px
+
+.wave-canvas
+	background: $color-white
+	display: block
+	position: absolute
+	left: 0
+	right: 0
+	top: 0
+	cursor: pointer
+	width: 100%
+
+	+mq($mq-small, "min")
+		background: none
 
 .footer-content
 	transition: all .4s ease
 	background: $color-dark
 	color: $color-white
-	padding: 0 100px
-	height: 0
+	padding: 25px 25px 50px
 	overflow: hidden
+
+	+mq($mq-small, "min")
+		padding: 50px 50px 75px
+
+	+mq($mq-large, "min")
+		padding: 0 100px
 
 	+mq($mq-xlarge, "min")
 		h2,
@@ -41,25 +72,67 @@
 
 	h2
 		font-size: 40px
-		display: inline-block
+		display: block
+
+		+mq($mq-large, "min")
+			display: inline-block
+			margin-right: 25px
 
 	.contact
 		display: inline-block
-		line-height: 300px
+
+		+mq($mq-large, "min")
+			line-height: 300px
+
 
 	.contact-method
 		color: $color-white
-		display: inline-block
+		display: block
 		line-height: 15px
-		margin-left: 35px
+		margin: 25px 0 0
 		border-top: 6px solid $color-white
 		font-size: 15px
 		padding-top: 8px
 		transition: all .3s ease
+
+		+mq($mq-small, "min")
+			display: inline-block
+			margin: 25px 25px 0 0
 
 		&:before
 			vertical-align: middle
 
 		&:hover
 			border-top-color: $color-yellow
+
+	.address
+		position: relative
+		padding-left: 20px
+
+		// 2 lines	
+		.line
+			display: block
+			margin-bottom: 3px
+
+		.comma
+			display: none
+
+		&:before
+			position: absolute
+			top: 9px
+			left: 0
+
+
+		// make it 1 line
+		+mq($mq-small, "min")
+			padding-left: 0
+
+			&:before
+				position: static
+
+			.line
+				display: inline
+
+			.comma
+				display: inline
 

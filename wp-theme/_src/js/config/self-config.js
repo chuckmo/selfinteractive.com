@@ -12,5 +12,8 @@ module.exports = {
 	waveEntranceDelay: 1000,
 
 	// milliseconds the entrance takes
-	waveEntranceSpeed: 700
+	waveEntranceSpeed: 700,
+
+	// pixel width of breakpoint when footer becomes dynamic
+	dynamicFooterBreakpoint: 600
 };
