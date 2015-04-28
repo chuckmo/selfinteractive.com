@@ -71,12 +71,17 @@
 			height: 300px
 
 	h2
-		font-size: 40px
+		font-size: 56px
 		display: block
+		border-bottom: 6px solid $color-white
+		padding-bottom: 20px
 
 		+mq($mq-large, "min")
+			font-size: 40px
 			display: inline-block
 			margin-right: 25px
+			border-bottom: none
+			padding-bottom: 0
 
 	.contact
 		display: inline-block
@@ -88,16 +93,19 @@
 	.contact-method
 		color: $color-white
 		display: block
-		line-height: 15px
 		margin: 25px 0 0
-		border-top: 6px solid $color-white
-		font-size: 15px
+		font-size: 21px
+		line-height: 21px
 		padding-top: 8px
 		transition: all .3s ease
+		font-weight: bold
 
 		+mq($mq-small, "min")
 			display: inline-block
 			margin: 25px 25px 0 0
+			border-top: 6px solid $color-white
+			font-size: 15px
+			line-height: 15px
 
 		&:before
 			vertical-align: middle
@@ -107,7 +115,10 @@
 
 	.address
 		position: relative
-		padding-left: 20px
+		padding-left: 27px
+
+		+mq($mq-small, "min")
+			padding-left: 20px
 
 		// 2 lines	
 		.line

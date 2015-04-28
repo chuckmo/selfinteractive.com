@@ -3,17 +3,31 @@ module.exports = function(){
 	var $win = $(window),
 		$header = $('.splash-header');
 
-	// vertically center header
-	function verticalCenter(){
+	function positionHeader(){
 		var winH = $win.height(),
-			headerH = $header.height();
+			winW = $win.width(),
+			headerH = $header.height(),
 
-		$header.css({
-			top: (winH * .4) - (headerH / 2)
-		});
+			headerCSS;
+
+		//mobile?
+		if(winW < 600){
+			// align to bottom
+			headerCSS = {
+				paddingTop: winH - 100 - headerH
+			};
+		}else{
+			// align middle
+			headerCSS = {
+				top: (winH * .4) - (headerH / 2)
+			};
+		}
+
+		$header.css(headerCSS);
+
 	}
-	verticalCenter();
+	positionHeader();
 
-	$win.on('resize', verticalCenter);
+	$win.on('resize', positionHeader);
 
 };

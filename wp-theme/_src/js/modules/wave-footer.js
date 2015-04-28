@@ -27,13 +27,7 @@ module.exports = function(){
 		footerScrollH;
 
 
-	var waveSetup = false;
 	function setupWaveEntrance(){
-
-		if(waveSetup)
-			return;
-
-		waveSetup = true;
 
 		setTimeout(function(){
 			
@@ -76,13 +70,18 @@ module.exports = function(){
 		$footer.toggleClass('show');
 		footerVisible = !footerVisible;
 
+		// scroll to footer on mobile
+		if($win.width() < 600){
+			$('html, body').animate({
+				scrollTop: $footer.offset().top
+			}, 500);
+		}
+
 		return false;
 	}
 
 
-	// set up the footer
-	var footerSetup = false;
-	function setupFooter(){
+	function sizeFooter(){
 		var winH = $win.height(),
 			winW = $win.width(),
 			docH = $doc.height();
@@ -102,13 +101,10 @@ module.exports = function(){
 
 		footerScrollH = docH - winH;
 
-		//////////////////////////////////////
-		// only run the following stuff once
-		// ///////////////////////////////////
-		if(footerSetup)
-			return;
+	}
+	$win.on('resize', sizeFooter);
 
-		footerSetup = true;
+	function initFooter(){
 
 		// run maybeToggleFooterOnScroll after a short delay
 		setTimeout(function(){
@@ -128,10 +124,11 @@ module.exports = function(){
 		});
 
 		setupWaveEntrance();
-	};
+	}
 
-	$win.on('resize', setupFooter);
-	setupFooter();
+
+	sizeFooter();
+	initFooter();
 
 	return {
 		showHideFooter: maybeToggleFooterOnScroll

@@ -10,9 +10,10 @@
 		max-width: 100%
 
 	.splash-header
-		padding: 50px 25px
-		position: static
+		padding: 0 25px
+		position: relative
 		background-color: $color-white
+		z-index: 1
 
 		// make it vertical center
 		+mq($mq-small, "min")
@@ -54,45 +55,73 @@
 			width: auto
 			text-indent: 0
 			color: $color-white
-			line-height: 38px
-			font-size: 15px
+			line-height: 52px
+			font-size: 22px
 			padding: 0 12px
 			text-transform: lowercase
-			border-radius: 6px
+			border-radius: 12px
 			overflow: visible
+
+			+mq($mq-small, "min")
+				font-size: 15px
+				line-height: 38px
+				border-radius: 6px
 
 	.speech-point
 		position: absolute
-		width: 10px
-		height: 14px
-		bottom: -8px
+		width: 14px
+		height: 20px
+		bottom: -11px
 		left: 0
+
+		+mq($mq-small, "min")
+			width: 10px
+			height: 14px
+			bottom: -8px
 
 	a
 		display: block
 		overflow: hidden
 		background: $color-dark
-		border-radius: 19px
-		width: 38px
-		height: 38px
+		border-radius: 27px
+		width: 54px
+		height: 54px
 		position: relative
 		text-align: center
-		line-height: 38px
+		line-height: 54px
 		color: $color-white
 		transition: all .3s ease
 		top: 0
+		font-size: 25px
+
 
 		&.icon-twitter
-			font-size: 22px
-			line-height: 44px
+			font-size: 26px
+			line-height: 62px
 
 		&.icon-linkedin
-			line-height: 40px
+			line-height: 56px
 
 		&.icon-git
-			line-height: 42px
+			line-height: 60px
 
 		&:hover
 			top: -5px
+
+		+mq($mq-small, "min")
+			border-radius: 19px
+			width: 38px
+			height: 38px
+			font-size: 16px
+
+			&.icon-twitter
+				font-size: 22px
+				line-height: 44px
+
+			&.icon-linkedin
+				line-height: 40px
+
+			&.icon-git
+				line-height: 42px
 
 	
