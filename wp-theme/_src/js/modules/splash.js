@@ -30,4 +30,9 @@ module.exports = function(){
 
 	$win.on('resize', positionHeader);
 
+	setTimeout(function(){
+		$('video').addClass('visible');
+	}, 1500);
+
+
 };

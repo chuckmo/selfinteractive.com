@@ -29,7 +29,7 @@ include_once('functions/wordpress/utility.php');
 include_once('functions/wordpress/admin-menu.php');
 
 // Environment Management
-include_once('functions/environment.php');
+include_once('functions/instagram.php');
 
 // Security
 define('DISALLOW_FILE_EDIT', true);

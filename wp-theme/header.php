@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="theme-color" content="#ee7421">
 
-	<title><?php wp_title('&raquo;','true','right'); ?></title>
+	<title>Self - Interactive Development, Consulting &amp; Training</title>
 
 	<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/a752c506-8239-4fac-8448-480d875f552d.css"/>
 	<link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css" />

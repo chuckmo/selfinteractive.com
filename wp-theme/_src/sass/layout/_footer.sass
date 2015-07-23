@@ -12,40 +12,42 @@
 	height: auto
 	padding-top: 100px
 	text-align: left
-	transition: all .4s ease
+	transition: transform .4s ease-out
+	transform: translateY(400px)
+	z-index: 2
+	height: 400px
 
+	.footer-content
+		height: 300px
 
 	// enable dynamic stuff
 	+mq($mq-small, "min")
-		height: 0
-		bottom: -100px
 		position: fixed
-		
+
 		.footer-content
-			height: 0
+			height: 300px
 
 		// peak up from the bottom
 		&.cower
-			height: 100px
-			bottom: 0
+			transform: translateY(300px)
 
 			// keep entrance anim slower
 			&.entrance
-				transition: all 1.5s ease
+				transition: transform 2s ease-out
+
+				&.show
+					transition: transform 1s ease-in
 
 		&.show
-			height: 400px
+			transform: translateY(0)
 
-			.footer-content
-				height: 300px
 
 .wave-canvas
-	background: $color-white
 	display: block
 	position: absolute
 	left: 0
 	right: 0
-	top: 0
+	top: 1px
 	cursor: pointer
 	width: 100%
 

@@ -61,7 +61,7 @@ module.exports = function(){
 
 	}
 
-
+	var winW = $win.width();
 	// toggle footer visibility
 	function toggleFooter(e){
 		if(e)
@@ -71,7 +71,7 @@ module.exports = function(){
 		footerVisible = !footerVisible;
 
 		// scroll to footer on mobile
-		if($win.width() < 600){
+		if(winW < 600){
 			$('html, body').animate({
 				scrollTop: $footer.offset().top
 			}, 500);
