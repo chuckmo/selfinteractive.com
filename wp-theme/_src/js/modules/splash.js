@@ -44,7 +44,10 @@ module.exports = function(){
 			'https://scontent.cdninstagram.com/hphotos-xtf1/t50.2886-16/11099934_1618123458402108_882747486_n.mp4',
 			'https://scontent.cdninstagram.com/hphotos-xpa1/t50.2886-16/11080166_1584122515200011_598251143_n.mp4',
 			'https://scontent.cdninstagram.com/hphotos-xpf1/t50.2886-16/11019589_1555832421368292_1326463975_n.mp4',
-			'https://scontent.cdninstagram.com/hphotos-xpf1/t50.2886-16/11014526_1626068410948112_1659381473_n.mp4'
+			'https://scontent.cdninstagram.com/hphotos-xpf1/t50.2886-16/11014526_1626068410948112_1659381473_n.mp4',
+			'https://scontent.cdninstagram.com/hphotos-xaf1/t50.2886-16/12140287_1505748683085060_43559077_n.mp4',
+			'https://scontent.cdninstagram.com/hphotos-xaf1/t50.2886-16/12070161_102762756748267_1078217979_n.mp4',
+			'https://scontent.cdninstagram.com/hphotos-xaf1/t50.2886-16/11912140_920807741340842_1159799935_n.mp4',
 		];
 
 	function getRandomVid(videos){
